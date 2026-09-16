@@ -92,33 +92,54 @@ platforms:
 # max_age_days: 可选，覆盖全局 freshness_filter.max_age_days
 # ===============================================================
 rss:
-  enabled: true                       # 是否启用 RSS 抓取（true=启用, false=关闭）
+  enabled: true
 
-  # 文章新鲜度过滤（过滤超龄旧文章，避免重复推送）
-  # 仅在推送阶段过滤，所有文章仍会存入数据库
   freshness_filter:
-    enabled: true                     # 是否启用新鲜度过滤（true=启用, false=关闭）
+    enabled: true
+    max_age_days: 3
 
-    max_age_days: 1                   # 最大文章年龄（天）
-                                      # - 正整数：只推送 N 天内的文章
-                                      # - 0：禁用过滤，推送所有文章
-
-  # 单个 feed 可配置 max_age_days 覆盖全局设置：
-  # - 不配置：使用全局 freshness_filter.max_age_days（默认 3 天）
-  # - 正整数：覆盖全局设置，只推送此天数内的文章
-  # - 0：禁用此频道的新鲜度过滤，推送所有文章
   feeds:
+    - id: "lol-official"
+      name: "英雄联盟官方资讯"
+      url: "https://antosik-lol-rss.s3.eu-central-1.amazonaws.com/v4/lol/oce/news.en-AU.xml"
+      enabled: true
+      max_age_days: 3
 
+    - id: "wild-rift-zh"
+      name: "英雄联盟手游资讯"
+      url: "https://changchiyou.github.io/wildrift-news-feeds/wildrift-news-zh-tw.xml"
+      enabled: true
+      max_age_days: 3
 
+    - id: "arknights-news"
+      name: "明日方舟资讯"
+      url: "https://rsshub.app/hypergryph/arknights/news"
+      enabled: true
+      max_age_days: 3
 
+    - id: "roco-kingdom"
+      name: "洛克王国世界资讯"
+      url: "https://rocokingdom.app/zh/news/rss.xml"
+      enabled: true
+      max_age_days: 7
 
+    - id: "nintendo-life"
+      name: "Switch 2和任天堂资讯"
+      url: "https://www.nintendolife.com/feeds/news"
+      enabled: true
+      max_age_days: 3
 
-    # 自定义源示例
-    # - id: "custom-feed"
-    #   name: "自定义源"
-    #   url: "https://example.com/feed.xml"
-    #   enabled: false
-    #   max_age_days: 0               # 示例：禁用过滤，推送所有文章
+    - id: "steam-news"
+      name: "Steam官方资讯"
+      url: "https://store.steampowered.com/feeds/news.xml"
+      enabled: true
+      max_age_days: 3
+
+    - id: "itchio"
+      name: "独立游戏资讯"
+      url: "https://itch.io/blog.rss"
+      enabled: true
+      max_age_days: 7
 
 
 # ===============================================================
@@ -210,9 +231,9 @@ display:
     standalone: true # 独立展示区：完整热榜/RSS，不受关键词过滤（true=显示, false=隐藏）
     ai_analysis: false # AI 分析区域（true=显示, false=隐藏）
   standalone:
-    platforms: ["bilibili-hot-search","toutiao","douyin","cls-hot","wallstreetcn-hot","weibo","baidu"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
+    platforms: ["bilibili-hot-search","toutiao","douyin","weibo","baidu"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
     rss_feeds: []                                # RSS 源 ID 列表（如 ["hacker-news"]）
-    max_items: 2                                # 每个源最多展示条数（0=不限制）
+    max_items: 3                                # 每个源最多展示条数（0=不限制）
 
 
 # ===============================================================
