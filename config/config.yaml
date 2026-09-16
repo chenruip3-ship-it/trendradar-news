@@ -95,8 +95,8 @@ rss:
   enabled: true
 
   freshness_filter:
-    enabled: true
-    max_age_days: 3
+    enabled: false
+    max_age_days: 7
 
   feeds:
     - id: "lol-official"
@@ -232,8 +232,8 @@ display:
     ai_analysis: false # AI 分析区域（true=显示, false=隐藏）
   standalone:
     platforms: ["bilibili-hot-search","toutiao","douyin","weibo","baidu"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
-    rss_feeds: []                                # RSS 源 ID 列表（如 ["hacker-news"]）
-    max_items: 3                                # 每个源最多展示条数（0=不限制）
+    rss_feeds: ["wild-rift-zh","lol-official","roco-kingdom"] # RSS 源 ID 列表（如 ["hacker-news"]）
+    max_items: 4                                # 每个源最多展示条数（0=不限制）
 
 
 # ===============================================================
