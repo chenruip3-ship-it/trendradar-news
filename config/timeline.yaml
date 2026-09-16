@@ -165,9 +165,9 @@ presets:
     # 默认配置 ── 不命中任何时间段时的行为
     default:
       collect: true                # 始终采集
-      analyze: true                # AI 分析当前榜单
+      analyze: false                # AI 分析当前榜单
       ai_mode: "current"           # AI 分析当前榜单
-      push: true                   # 每次推送当前在榜热点
+      push: false                   # 每次推送当前在榜热点
       report_mode: "current"       # 当前在榜的新闻
       # frequency_file: "xxx.txt"               # 关键词文件（可选，位于 config/custom/keyword/）
       # interests_file: "xxx.txt"                # AI 兴趣文件（可选，位于 config/custom/ai/）
@@ -180,8 +180,8 @@ presets:
     periods:
       evening_summary:
         name: "晚间汇总"
-        start: "20:00"
-        end: "22:00"
+        start: "16:00"
+        end: "17:00"
         # frequency_file: "xxx.txt"               # 关键词文件（可选，位于 config/custom/keyword/）
         # interests_file: "xxx.txt"                # AI 兴趣文件（可选，位于 config/custom/ai/）
         # filter_method: "keyword"                # 筛选策略（可选: keyword | ai，不填用全局 filter.method）
@@ -193,16 +193,18 @@ presets:
           push: true               # 窗口内只推送一次
 
     # 日计划 ── 把时间段组装成一天的安排
+        push: true
       morning_push:
         name: "早推"
-        start: "08:00"
-        end: "09:00"
+        start: "06:00"
+        end: "07:00"
         collect: true
         analyze: false
         push: true
-        report_mode: current
+        report_mode: daily
         once:
           push: true
+        ai_mode: daily
     day_plans:
       all_day:
         periods: ["evening_summary", "morning_push"]
